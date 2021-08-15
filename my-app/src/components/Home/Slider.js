@@ -1,5 +1,5 @@
 import React from 'react';
-import {useStyles} from '../styles/Home.js';
+import {useStyles} from '../../styles/Home/Home.js';
 import { Typography, } from '@material-ui/core/';
 import Button from '@material-ui/core/Button';
 import Container from '@material-ui/core/Container';
@@ -7,7 +7,7 @@ import Container from '@material-ui/core/Container';
 
 
 
-export default function Home() {
+export default function SliderHome() {
   const classes = useStyles();
 
   return (
