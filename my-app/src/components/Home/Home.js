@@ -1,8 +1,7 @@
 import React from 'react';
 import {useStyles} from '../../styles/Home/Home.js';
 import SliderHome from './Slider';
-
-
+import SliderMain from './SliderMain';
 
 
 export default function Home() {
@@ -11,6 +10,7 @@ export default function Home() {
   return (
     <>
       <SliderHome/>
+      <SliderMain/>
     </>
   );
 }
