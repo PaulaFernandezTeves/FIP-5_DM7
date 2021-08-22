@@ -17,13 +17,16 @@ export const useStyles = makeStyles((theme) => ({
       '&::before': {
         content: '""',
         background: 'rgb(69,87,112,0.4)',
-        height:'100vh',
+        height:'100',
         width: '100%',
-        minHeight: '100vh',
+        minHeight: '100%',
         position: 'absolute',
         zIndex: '-1',
-      }
-  },
+      },
+      ['@media (max-width:700px)']: { // eslint-disable-line no-useless-computed-key
+        height:'80vh',  
+    },
+},
   Container:{
     marginTop: '3em',
   },
