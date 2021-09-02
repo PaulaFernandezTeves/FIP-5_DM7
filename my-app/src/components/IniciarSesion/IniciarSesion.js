@@ -10,6 +10,7 @@ import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import { red } from '@material-ui/core/colors';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -66,17 +67,64 @@ const useStyles = makeStyles((theme) => ({
   },
   submit: {
     margin: theme.spacing(3, 0, 2),
+    backgroundColor: '#44ff53',
+    transition: '0.4s',
+    '&:hover': {
+      backgroundColor: '#75f37f'
+    }
   },
   image:{
     background: '#3CDBA0',
-    padding: '5em',
     borderRadius: '300px',
     borderBottomLeftRadius: '0px',
-    flexDirection: 'column',
-    alignSelf: 'flex-end',
-    marginBottom: '6em',
+    padding: '30px',
+    width: '200px',
+    height: '200px',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    '& h5': { fontWeight: 'bold', textAlign: 'center' }
   },
-  
+  rootTextField: {
+    '& label.Mui-focused': {
+      backgroundColor: '#ffffff',
+      color: '#22ff00',
+      padding: '5px',
+      paddingTop: '0'
+    },
+    '&:before': {
+      content: 'attr(div)',
+      display: 'block',
+      position:'absolute',
+      width: '100%',
+      height: '100%',
+      top: '0',
+      left: '0',
+      backgroundImage: 'linear-gradient(to right, #22ff33, #c6e4ce, #3bfb53)',
+      padding: '10px',
+      boxSizing: 'border-box',
+      borderRadius: '5px',
+      pointerEvents: 'none'
+    },
+  },
+  inputTextField: {
+    '& + fieldset': {
+      borderColor: 'transparent',
+      backgroundColor: 'white',
+      margin: '2px'
+    },
+    '&:focus + fieldset': {
+      borderColor: 'transparent !important',
+    }
+  },
+  link: {
+    color: '#61bb61'
+  },
+  checkbox: {
+    '& .MuiSvgIcon-root': {
+      fill: '#61bb61'
+    }
+  }
 }));
 
 export default function SignIn() {
@@ -84,15 +132,12 @@ export default function SignIn() {
 
   return (
     <div className={classes.root}>
-      <div component="main" maxWidth="xs" className={classes.container}>
-        <div className= {classes.image}>
-        <Typography component="h1" variant="h5">
-          Comparte tu <br/>
-           conocimiento al <br/> 
-           mundo.<br/>
-          Vive el curso<br/>
-          Inicia Sesión<br/>       
-        </Typography>
+      <main className={classes.container}>
+        <div className={classes.image}>
+          <Typography 
+            variant="h5">
+            Comparte tu conocimiento al mundo. Vive el curso.     
+          </Typography>
         </div>
         <div className={classes.paper}>
           <Typography component="h1" variant="h5">
@@ -100,7 +145,12 @@ export default function SignIn() {
           </Typography>
           <form className={classes.form} noValidate>
             <TextField
-              className={classes.input}
+              classes={{
+                root: classes.rootTextField
+              }}
+              inputProps={{
+                className: classes.inputTextField
+              }}
               variant="outlined"
               margin="normal"
               required
@@ -112,6 +162,12 @@ export default function SignIn() {
               autoFocus
             />
             <TextField
+              classes={{
+                root: classes.rootTextField
+              }}
+              inputProps={{
+                className: classes.inputTextField
+              }}
               variant="outlined"
               margin="normal"
               required
@@ -123,7 +179,7 @@ export default function SignIn() {
               autoComplete="current-password"
             />
             <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
+              control={<Checkbox className={classes.checkbox} value="remember" color="primary" />}
               label="Remember me"
             />
             <Button
@@ -137,19 +193,23 @@ export default function SignIn() {
             </Button>
             <Grid container>
               <Grid item xs>
-                <Link href="#" variant="body2">
+                <Link 
+                  className={classes.link}
+                  href="#" variant="body2">
                   Forgot password?
                 </Link>
               </Grid>
               <Grid item>
-                <Link href="#" variant="body2">
+                <Link 
+                  className={classes.link}
+                  href="#" variant="body2">
                   {"Don't have an account? Sign Up"}
                 </Link>
               </Grid>
             </Grid>
           </form>
         </div>
-      </div>
+      </main>
     </div>
   );
 }
